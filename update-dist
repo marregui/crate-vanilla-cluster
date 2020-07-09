@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Forder 'dist' will contain the crate git clone 'crate-clone'.
+# The clone will be used to build a tarball, which will be
+# cracked open. A soft link `crate` will be created to point
+# to the CrateDB distribution.
+
+if [ ! -d dist ]; then
+    mkdir dist
+fi
+
+# get the clone
+if [ ! -d dist/crate-clone ]; then
+    git clone https://github.com/crate/crate.git dist/crate-clone
+fi
+cd dist/crate-clone
+
+# delete any old tarballs
+find ./app/build/distributions -name 'crate-*.tar.gz' -exec rm -f {} \;
+
+# build the tarball
+git pull
+./gradlew clean disTar
+
+# crack open the tarball
+latest_tar_ball=$(find ./app/build/distributions -name 'crate-*.tar.gz')
+cp $latest_tar_ball ..
+cd ..
+name=$(basename $latest_tar_ball)
+tar -xzvf $name
+rm -f $name
+name=${name/.tar.gz/}
+cd ..
+
+# create the symlink to the distribution folder
+rm -f crate
+ln -s dist/$name crate
+echo "Crate $name has been installed."
