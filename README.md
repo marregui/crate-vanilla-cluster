@@ -78,21 +78,9 @@ shards. A replica is simply a copy of a shard.
      cluster.name: simple   # don't need to change this
      node.name: n1
      stats.service.interval: 0
-     network.host: _local_
-     node.max_local_storage_nodes: 1
-
      http.cors.enabled: true
      http.cors.allow-origin: "*"
-
-     transport.tcp.port: 4301
-     #gateway.expected_nodes: 3
-     #gateway.recover_after_nodes: 2
-     #discovery.seed_hosts:
-     #  - 127.0.0.1:4301
-     #  - 127.0.0.1:4302
-     #cluster.initial_master_nodes:
-     #  - 127.0.0.1:4301
-     #  - 127.0.0.1:4302
+     
 
 5. Run *./unsafe-bootstrap n1** to let **n1** join a new cluster when it starts.
 
