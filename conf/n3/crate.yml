@@ -7,6 +7,8 @@ node.max_local_storage_nodes: 3
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 
+memory.allocation.type: off-heap
+
 gateway.expected_nodes: 3
 gateway.recover_after_nodes: 3
 

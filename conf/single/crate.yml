@@ -5,3 +5,5 @@ network.host: _local_
 
 http.cors.enabled: true
 http.cors.allow-origin: "*"
+
+memory.allocation.type: off-heap
