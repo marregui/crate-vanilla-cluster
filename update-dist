@@ -20,6 +20,7 @@ find ./app/build/distributions -name 'crate-*.tar.gz' -exec rm -f {} \;
 
 # build the tarball
 git pull
+git checkout j/netty
 ./gradlew clean disTar
 
 # crack open the tarball

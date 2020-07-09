@@ -1,7 +1,8 @@
 #!/bin/sh
 
 display_usage_and_exit() {
-    echo "usage: $0 node_name"
+    echo "usage: $0 node_name, where node_name:"
+    ls conf | sed 's|\t|\n/|g'
     exit 1
 }
 

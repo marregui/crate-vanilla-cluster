@@ -35,16 +35,16 @@ parallel processing power on large scale data, when you only have one host.
 ## Sample table for data.py
 
   ```
-  CREATE TABLE IF NOT EXISTS "doc"."logs" (
-     "log_time" TIMESTAMP WITH TIME ZONE NOT NULL,
-     "client_ip" IP NOT NULL,
-     "request" TEXT NOT NULL,
-     "status_code" SMALLINT NOT NULL,
-     "object_size" BIGINT NOT NULL
+  CREATE TABLE IF NOT EXISTS doc.logs (
+     log_time TIMESTAMP WITH TIME ZONE NOT NULL,
+     client_ip IP NOT NULL,
+     request TEXT NOT NULL,
+     status_code SMALLINT NOT NULL,
+     object_size BIGINT NOT NULL
   )
   CLUSTERED INTO 4 SHARDS
   WITH (
-     number_of_replicas = '0-1',
+     number_of_replicas = '0-1'     
   );
   ```
 
