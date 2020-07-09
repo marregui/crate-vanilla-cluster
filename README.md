@@ -34,8 +34,7 @@ parallel processing power on large scale data, when you only have one host.
 
 ## Sample table for data.py
 
-::
-
+  ```
   CREATE TABLE IF NOT EXISTS "doc"."logs" (
      "log_time" TIMESTAMP WITH TIME ZONE NOT NULL,
      "client_ip" IP NOT NULL,
@@ -47,6 +46,7 @@ parallel processing power on large scale data, when you only have one host.
   WITH (
      number_of_replicas = '0-1',
   );
+  ```
 
 We have a default min number of replicas of zero, and a max of one for each of our four 
 shards. A replica is simply a copy of a shard.
@@ -56,9 +56,9 @@ shards. A replica is simply a copy of a shard.
 
 1. We need to ensure that the number of replicas matches the number of nodes:
 
-::
-
-  ALTER TABLE logs SET (number_of_replicas = '1-all');
+  ```
+    ALTER TABLE logs SET (number_of_replicas = '1-all');
+  ```
 
 2. After replication is completed, we can take down all the nodes in the cluster
    (**ctrl^C** in the terminal).
@@ -73,22 +73,21 @@ shards. A replica is simply a copy of a shard.
    be running across multiple hosts, and then we would want the master node to become the
    new single node cluster:
 
-   ::
-
+   ```
      cluster.name: simple   # don't need to change this
      node.name: n1
      stats.service.interval: 0
      http.cors.enabled: true
      http.cors.allow-origin: "*"
-     
+   ```
 
 5. Run *./unsafe-bootstrap n1** to let **n1** join a new cluster when it starts.
 
 6. Run **./start-node n1**.
    Panic not, the cluster state is *[YELLOW]*, we sort that out with:
 
-   ::
-
+   ```
      ALTER TABLE logs SET (number_of_replicas = '0-1');
+   ```
 
 .. _`Admin UI`: http://localhost:4200
