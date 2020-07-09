@@ -30,7 +30,7 @@ parallel processing power on large scale data, when you only have one host.
 
    Which will form the ``Vanilla Cluster``, electing a master. You can interact with the 
    ``Vanilla Cluster`` by opening a browser and pointing it to *http://localhost:4200*, 
-   *CrateDB*'s `Admin UI`_.
+   *CrateDB*'s Admin UI.
 
 ## Sample table for data.py
 
@@ -89,5 +89,3 @@ shards. A replica is simply a copy of a shard.
    ```
      ALTER TABLE logs SET (number_of_replicas = '0-1');
    ```
-
-.. _`Admin UI`: http://localhost:4200
