@@ -6,4 +6,6 @@ network.host: _local_
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 
+processors: 12
+bootstrap.mlockall: true
 memory.allocation.type: off-heap
