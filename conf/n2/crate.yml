@@ -8,7 +8,7 @@ http.cors.enabled: true
 http.cors.allow-origin: "*"
 
 processors: 6
-bootstrap.mlockall: true
+bootstrap.memory_lock: true
 memory.allocation.type: off-heap
 
 gateway.expected_nodes: 3
