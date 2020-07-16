@@ -1,23 +1,21 @@
 
 # Vanilla Cluster (3 node cluster)
 
-``Vanilla Cluster``: three node CrateDB cluster that runs on a single host to provide 
-parallel processing power on large scale data, when you only have one host.
+Three node CrateDB cluster that runs on a single host.
 
 ## Contents
 
-   - **update-dist**: script to install **CrateDB** locally. This script will install 
-     the latest, unreleased, **CrateDB** under **dist/**, creating a link 
-     **./crate -> dist/crate..**.
-   - **dist**: installed **CrateDB** distribution.
-   - **crate**: a symlink to the installed distribution in the *dist* folder, where
-     you will also find a **crate-clone** git repository.
-   - **conf**: **CrateDB** configurations, each node in the cluster has a folder
-     in there, with the **crate.yml** and **log4j2.properties** configuration files.
-   - **data**: **CrateDB** the nodes will persist their data under ``data/n<i>/nodes/0``.
-   - **start-node**: script to start **CrateDB** with a given configuration specified
+   - **update-dist**: will install the latest, unreleased, CrateDB under *dist/*, 
+     creating a soft link *crate -> dist/crate..*.
+   - **dist**: installed CrateDB distribution, where you will also find a 
+     *crate-clone* git repository.
+   - **crate**: a symlink to the installed distribution in the *dist* folder.
+   - **conf**: CrateDB configurations, each node in the cluster has a folder
+     in there, with the *crate.yml* and *log4j2.properties* configuration files.
+   - **data**: CrateDB nodes will persist their data under ``data/n<i>/nodes/0``.
+   - **start-node**: script to start CrateDB with a given configuration specified
      as a node name, `e.g. n1`, in the parameters to the script.
-   - **detach-from-cluster**: script to detach a node from the ``Vanilla Cluster```.
+   - **detach-from-cluster**: script to detach a node from the ``Vanilla Cluster``.
    - **unsafe-bootstrap**: script to bootstrap a node to form a new cluster. Which
      means, recreating its cluster state so that it may be started on its own.
    - **data.py**: python3 script produce sample data.
@@ -81,7 +79,7 @@ shards. A replica is simply a copy of a shard.
      http.cors.allow-origin: "*"
    ```
 
-5. Run *./unsafe-bootstrap n1** to let **n1** join a new cluster when it starts.
+5. Run **./unsafe-bootstrap n1** to let **n1** join a new cluster when it starts.
 
 6. Run **./start-node n1**.
    Panic not, the cluster state is *[YELLOW]*, we sort that out with:
