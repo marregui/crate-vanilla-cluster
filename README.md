@@ -1,7 +1,5 @@
 
-# Vanilla Cluster (3 node cluster)
-
-Three node CrateDB cluster that runs on a single host.
+# CrateDB local install tools
 
 ## Contents
 
