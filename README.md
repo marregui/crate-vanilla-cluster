@@ -4,16 +4,18 @@
 ## Contents
 
    - **update-dist**: will install the latest, unreleased, CrateDB under *dist/*, 
-     creating a soft link *crate -> dist/crate..*.
+     creating a soft link *crate* to the actual CrateDB installed binary.
    - **dist**: installed CrateDB distribution, where you will also find a 
      *crate-clone* git repository.
    - **crate**: a symlink to the installed distribution in the *dist* folder.
    - **conf**: CrateDB configurations, each node in the cluster has a folder
      in there, with the *crate.yml* and *log4j2.properties* configuration files.
+     There is an additional folder, *single*, to run a single node cluster.
    - **data**: CrateDB nodes will persist their data under ``data/n<i>/nodes/0``.
+     The single node cluster will persists its data under ``data/single``.
    - **start-node**: script to start CrateDB with a given configuration specified
-     as a node name, `e.g. n1`, in the parameters to the script.
-   - **detach-from-cluster**: script to detach a node from the ``Vanilla Cluster``.
+     as a node name, `e.g. n1, n2, n3, single`, in the parameters to the script.
+   - **detach-from-cluster**: script to detach a node from the cluster.
    - **unsafe-bootstrap**: script to bootstrap a node to form a new cluster. Which
      means, recreating its cluster state so that it may be started on its own.
    - **data.py**: python3 script produce sample data.
@@ -24,9 +26,15 @@
    - **./start-node n2**
    - **./start-node n3**
 
-   Which will form the ``Vanilla Cluster``, electing a master. You can interact with the 
-   ``Vanilla Cluster`` by opening a browser and pointing it to *http://localhost:4200*, 
-   *CrateDB*'s Admin UI.
+   Which will form a local three node cluster, electing a master. You can interact with the 
+   cluster by opening a browser and pointing it to *http://localhost:4200*, *CrateDB*'s Admin UI.
+
+   or 
+
+   - **./start-node single**
+
+   Which will form a local single node cluster. You can interact with the main node by opening a 
+   browser and pointing it to *http://localhost:4200*, *CrateDB*'s Admin UI.
 
 ## Sample table for data.py
 
@@ -44,8 +52,8 @@
   );
   ```
 
-We have a default min number of replicas of zero, and a max of one for each of our four 
-shards. A replica is simply a copy of a shard.
+With a default minimum number of replicas of zero, and a maximum of one for each 
+of our four shards. A replica is simply a copy of a shard.
 
 
 ## Downscaling
